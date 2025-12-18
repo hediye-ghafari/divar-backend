@@ -8,7 +8,7 @@ const cors = require("cors");
 dotenv.config();
 async function main() {
   const app = express();
-  const port = process.env.PORT || 10000;
+  const port = process.env.PORT;
   require("./src/config/mongoose.config");
   app.use(
     cors({
@@ -22,8 +22,8 @@ async function main() {
   SwaggerConfig(app);
   NotFoundHandler(app);
   AllExceptionHandler(app);
-  app.listen(port, "0.0.0.0", () => {
-    console.log(`server running on port ${port}`);
+  app.listen(port, () => {
+    console.log(`server: http://localhost:${port}`);
   });
 }
 main();
